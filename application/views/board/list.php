@@ -7,7 +7,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>dd</h1>
-	<a href="/board">List</a>
+	<h1>This is the list of this board</h1>
+	<a href="/board/create">Create New</a>
 </body>
 </html>
