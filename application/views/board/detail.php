@@ -13,35 +13,36 @@
 	<table border="1">
 		<tr>
 			<th>Title</th>
+			<td>
+				<?= $detail->title; ?>
+			</td>
+		</tr>
+		<tr>
+			<th>Contents</th>
+			<td>
+				<?= $detail->content; ?>
+			</td>
+		</tr>
+		<tr>
 			<th>Date</th>
-			<th></th>
-			<th></th>
+			<td>
+				<?= $detail->regdate; ?>
+			</td>
 		</tr>
 
+		<tr>
+			<th colspan="2"><a href="/board">Back to List</a></th>
 
-		<!-- loop index() -->
-		<?php
-		foreach ($list as $ls) { ?>
-			<tr>
-				<td>
-					<?= $ls->title; ?>
-				</td>
-				<td>
-					<?= $ls->regdate; ?>
-				</td>
+		</tr>
+
+	</table>
+
+	<!-- </td>
 				<td><a href="/board/detail/<?= $ls->idx; ?>">Detail</a>
 				</td>
 				<td><a href="/board/edit/<?= $ls->idx; ?>">Edit</a>
 				</td>
-			</tr>
-			<?php
-		}
-		?>
-
-	</table>
-
-
-	<a href="/board/create">Create New</a>
+	<a href="/board/create">Create New</a> -->
 </body>
 
 </html>
