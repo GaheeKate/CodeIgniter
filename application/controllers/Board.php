@@ -22,17 +22,6 @@ class Board extends CI_Controller
 		$this->load->view('board/create');
 	}
 
-	public function detail($idx)
-	{
-		$data['detail'] = $this->board->get($idx);
-		$this->load->view('board/detail', $data);
-	}
-
-	public function update($idx)
-	{
-		$data['update'] = $this->board->get($idx);
-		$this->load->view('board/update', $data);
-	}
 	public function store()
 	{
 		$this->form_validation->set_rules('title', 'Title', "required");
@@ -40,6 +29,30 @@ class Board extends CI_Controller
 
 		if ($this->form_validation->run()) {
 			$this->board->store();
+			redirect('/board');
+		} else {
+			echo "Error";
+		}
+	}
+	public function detail($idx)
+	{
+		$data['detail'] = $this->board->get($idx);
+		$this->load->view('board/detail', $data);
+	}
+	//get
+	public function edit($idx)
+	{
+		$data['edit'] = $this->board->get($idx);
+		$this->load->view('board/edit', $data);
+	}
+	//post
+	public function update($idx)
+	{
+		$this->form_validation->set_rules('title', 'Title', "required");
+		$this->form_validation->set_rules('content', 'Content', "required");
+
+		if ($this->form_validation->run()) {
+			$this->board->update($idx);
 			redirect('/board');
 		} else {
 			echo "Error";

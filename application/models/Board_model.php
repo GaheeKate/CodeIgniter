@@ -17,6 +17,17 @@ class Board_model extends CI_Model
         $result = $this->db->insert('boards', $data);
         return $result;
     }
+
+    public function update($idx)
+    {
+        $data = [
+            'title' => $this->input->post('title'),
+            'content' => $this->input->post('content'),
+        ];
+        //join with 'where'
+        $result = $this->db->where('idx', $idx)->update('boards', $data);
+        return $result;
+    }
     //function getAll gets all data from boards table
     public function getAll()
     {
