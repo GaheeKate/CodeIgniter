@@ -12,7 +12,21 @@ class Board extends CI_Controller
 	}
 	public function index()
 	{
-		$data['list'] = $this->board->getAll(); //Retrieve the 'getAll' function from the 'board' model and store the result in an array named '$data' with a key of 'list' 
+		//https://codeigniter.com/userguide3/libraries/pagination.html
+		$this->load->library('pagination');
+
+		$config['base_url'] = '/board/';
+		$config['total_rows'] = $this->board->getAll("count", 0, 0);
+		$config['per_page'] = 3;
+		$config['uri_segment'] = 2; //location of row count
+
+		$this->pagination->initialize($config);
+
+		$page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+
+		$data['pages'] = $this->pagination->create_links();
+
+		$data['list'] = $this->board->getAll("all", $config['per_page'], $page); //Retrieve the 'getAll' function from the 'board' model and store the result in an array named '$data' with a key of 'list' 
 
 		$this->load->view('board/list', $data);
 	}
@@ -57,6 +71,12 @@ class Board extends CI_Controller
 		} else {
 			echo "Error";
 		}
+	}
+
+	public function delete($idx)
+	{
+		$item = $this->board->delete($idx);
+		redirect('/board');
 	}
 
 }

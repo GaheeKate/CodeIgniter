@@ -16,6 +16,7 @@
 			<th>Date</th>
 			<th></th>
 			<th></th>
+			<th></th>
 		</tr>
 
 
@@ -33,11 +34,19 @@
 				</td>
 				<td><a href="/board/edit/<?= $ls->idx; ?>">Edit</a>
 				</td>
+				</td>
+				<td><a href="/board/delete/<?= $ls->idx; ?>">Delete</a>
+				</td>
 			</tr>
 			<?php
 		}
 		?>
 
+		<tr>
+			<th colspan="5">
+				<?= $pages; ?>
+			</th>
+		</tr>
 	</table>
 
 
